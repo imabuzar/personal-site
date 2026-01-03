@@ -1,22 +1,42 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
+<BaseLayout title="Abuzar">
+  <div class="space-y-10">
+    <section id="hero">
+      <div class="flex items-center gap-6 lg:gap-10">
+        <img
+          src="/profile.png"
+          alt="Profile Picture"
+          width={160}
+          height={160}
+          class="h-28 w-28 rounded-full object-cover md:h-32 md:w-32 lg:h-40 lg:w-40"
+        />
+        <div>
+          <span
+            class="text-dimmed-foreground font-mono text-sm tracking-widest uppercase"
+            >Welcome</span
+          >
+          <h1>I'm Abuzar</h1>
+        </div>
+      </div>
+    </section>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <div class="not-prose border-l-4 border-zinc-900 dark:border-zinc-50">
+      <p class="ml-4 text-lg text-zinc-900 dark:text-zinc-50">
+        A human and a computer programmer.
+      </p>
+    </div>
 
-    <title>Abuzar</title>
-  </head>
-
-  <body>
-    <h1>Hello, world!</h1>
-  </body>
-</html>
+    <section id="about">
+      <p>
+        I program computers. Currently living in Islamabad, Pakistan. I am an
+        undergraduate student of Computer Science at Quaid-i-Azam University
+        Islamabad. I do what I like to do. I have interest in systems
+        programming. I often enjoy solitude and that's what I find pleasent more
+        than anything in life.
+      </p>
+    </section>
+  </div>
+</BaseLayout>

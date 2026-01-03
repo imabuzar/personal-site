@@ -1,0 +1,36 @@
+---
+import NavLink from './NavLink.astro';
+
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+const navItems: NavItem[] = [
+  { label: 'Github', href: 'https://github.com/imabuzar' },
+  { label: 'Reddit', href: 'https://www.reddit.com/user/imabuzarr' },
+  { label: 'X', href: 'https://x.com/imabuzar_' },
+];
+---
+
+<footer class="border-border mt-20 border-t">
+  <div class="mx-auto w-full px-6 py-10 md:max-w-3xl lg:max-w-4xl xl:max-w-5xl">
+    <div class="flex flex-col items-center justify-between gap-6 md:flex-row">
+      <p class="text-dimmed-foreground font-mono text-xs tracking-tighter">
+        &copy; {new Date().getFullYear()} Abuzar. Built with Astro.
+      </p>
+
+      <nav>
+        <ul class="flex gap-6">
+          {
+            navItems.map((item) => (
+              <li>
+                <NavLink label={item.label} href={item.href} />
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>

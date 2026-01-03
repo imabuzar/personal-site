@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter', 'sans-serif';
+  --font-mono: 'Geist Mono Variable', monospace;
+
+  --color-background: var(--bg-color);
+  --color-border: var(--border-color);
+  --color-dimmed-foreground: var(--dimmed-text-color);
+}
+
+:root {
+  --bg-color: var(--color-zinc-50);
+  --border-color: theme('colors.zinc.300 / 60%');
+  --dimmed-text-color: var(--color-zinc-500);
+}
+
+.dark {
+  --bg-color: var(--color-zinc-950);
+  --border-color: theme('colors.zinc.800 / 90%');
+  --dimmed-text-color: var(--color-zinc-400);
+}
+
+@layer utilities {
+  /* Inline code styling */
+  .prose :where(code):not(:where(pre *, [class~='not-prose'] *)) {
+    @apply border-border rounded-md border bg-zinc-200/40 px-1.5 py-0.5 text-sm dark:border-zinc-700/60 dark:bg-zinc-800/80;
+  }
+
+  /* Remove backticks only for inline code */
+  .prose :where(code):not(:where(pre *, [class~='not-prose'] *))::before,
+  .prose :where(code):not(:where(pre *, [class~='not-prose'] *))::after {
+    content: none;
+  }
+}
+
+html.dark .astro-code,
+html.dark .astro-code span {
+  color: var(--shiki-dark) !important;
+  /* background-color: var(--shiki-dark-bg) !important; */
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+pre.astro-code {
+  @apply border-border bg-background! rounded-lg border dark:bg-zinc-900/30!;
+}

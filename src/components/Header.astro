@@ -1,0 +1,42 @@
+---
+import NavLink from './NavLink.astro';
+import ThemeSwitcher from './ThemeSwitcher.astro';
+
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+const navItems: NavItem[] = [];
+---
+
+<header
+  class="border-border sticky top-0 z-50 w-full border-b backdrop-blur-md"
+>
+  <div
+    class="mx-auto flex h-16 w-full items-center justify-between px-6 md:max-w-3xl lg:max-w-4xl xl:max-w-5xl"
+  >
+    <a
+      href="/"
+      class="font-mono text-lg font-extrabold tracking-tighter text-zinc-900 dark:text-zinc-50"
+    >
+      Abuzar
+    </a>
+
+    <nav>
+      <ul class="flex items-center gap-6">
+        {
+          navItems.map((item) => (
+            <li>
+              <NavLink label={item.label} href={item.href} />
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center">
+      <ThemeSwitcher />
+    </div>
+  </div>
+</header>
