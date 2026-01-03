@@ -1,16 +1,23 @@
 ---
 import NavLink from '../components/NavLink.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const { pathname } = Astro.url;
 ---
 
 <BaseLayout title="404: Not found | Abuzar">
   <section class="my-24 flex h-full flex-col items-center">
     <h1 class="mb-6!">404: Not found</h1>
-    <code>Path: {pathname}</code>
+
+    <code>Path: <span id="current-path">...</span></code>
+
     <div class="not-prose mt-12 underline underline-offset-2">
       <NavLink label="Back to home" href="/" />
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const span = document.getElementById('current-path');
+  if (span) {
+    span.textContent = window.location.pathname;
+  }
+</script>
